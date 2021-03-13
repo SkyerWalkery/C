@@ -17,8 +17,8 @@ class Number {
 public:
 	Number() {
 		for (int i = 0; i < 100; i++) {
-			inte[i] = 0;//ÕûÊı²¿·ÖµÄÄæĞò
-			deci[i] = 0;//Ğ¡Êı²¿·ÖµÄÕıĞò
+			inte[i] = 0;//æ•´æ•°éƒ¨åˆ†çš„é€†åº
+			deci[i] = 0;//å°æ•°éƒ¨åˆ†çš„æ­£åº
 		}
 		len_inte = 0, len_deci = 0;
 	}
@@ -48,15 +48,15 @@ void Number::GetNum() {
 	char numstr[103] = "\0";
 	cin >> numstr;
 	char* phead = numstr, *pdot = numstr, *ptail = NULL;
-	for (; *pdot != '.' && *pdot!='\0'; pdot++, len_inte++);//×¢ÒâÊäÈëÕûÊıµÄÇé¿ö
-	for (ptail = pdot + 1; *ptail != '\0'; ptail++, len_deci++);//¶¨Î»·Ö¸î
-	ptail--;//ÈÃptailÖ¸Ïò×îºó¶ø²»ÊÇÆäºóµÄ'\0'
+	for (; *pdot != '.' && *pdot!='\0'; pdot++, len_inte++);//æ³¨æ„è¾“å…¥æ•´æ•°çš„æƒ…å†µ
+	for (ptail = pdot + 1; *ptail != '\0'; ptail++, len_deci++);//å®šä½åˆ†å‰²
+	ptail--;//è®©ptailæŒ‡å‘æœ€åè€Œä¸æ˜¯å…¶åçš„'\0'
 
 	while (*ptail == '0') {
 		*ptail = '\0';
 		ptail--;
 		len_deci--;
-	}//ÏûÈ¥Ä©Î²¶àÓàµÄ0
+	}//æ¶ˆå»æœ«å°¾å¤šä½™çš„0
 
 	char* ptemp = pdot - 1;
 	for (int i = 0; i < len_inte; i++) {
@@ -87,7 +87,7 @@ Number Number::operator+ (const Number& other) const {
 	if (temp.deci[0] > 9) {
 		temp.deci[0] -= 10;
 		temp.inte[0] += 1;
-	}//Ğ¡Êı²¿·ÖµÄÏà¼ÓÓë½øÎ»
+	}//å°æ•°éƒ¨åˆ†çš„ç›¸åŠ ä¸è¿›ä½
 
 	for (int i = 0; i < temp.len_inte; i++) {
 		temp.inte[i] += this->inte[i] + other.inte[i];
@@ -96,10 +96,10 @@ Number Number::operator+ (const Number& other) const {
 			temp.inte[i] -= 10;
 		}
 	}
-	if (temp.inte[temp.len_inte] > 0) temp.len_inte++;//ÕûÊı²¿·ÖµÄÏà¼ÓÓë½øÎ»
+	if (temp.inte[temp.len_inte] > 0) temp.len_inte++;//æ•´æ•°éƒ¨åˆ†çš„ç›¸åŠ ä¸è¿›ä½
 
 	while (temp.deci[temp.len_deci - 1] == 0)
-		temp.len_deci--;//È¥³ıĞ¡Êı¶àÓàµÄ0
+		temp.len_deci--;//å»é™¤å°æ•°å¤šä½™çš„0
 
 	return temp;
 }
