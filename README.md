@@ -1,5 +1,6 @@
-# My C++ works
+# My works in college
 # ^_^
+It's a record of my works during my studying life in CS in NJU:)
 
 ***
 ## 2021/3/13更新
